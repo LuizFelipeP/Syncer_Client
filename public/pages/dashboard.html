@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Visão Geral dos Gastos</h1>
+    <p id="welcome-message"></p>
+
+    <div class="form-group">
+        <button id="add-expense-btn">Adicionar Gasto</button>
+    </div>
+
+    <h2>Lista de Gastos</h2>
+
+    <!-- Tabela para lista de gastos -->
+    <table id="expense-table">
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Usuário</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody id="expense-list">
+        <!-- Os dados dos gastos serão adicionados aqui pelo JS -->
+        </tbody>
+    </table>
+
+    <button id="logout-btn">Sair</button>
+</div>
+
+
+<script type="module" src="../javascripts/dashboard.js"></script>
+</body>
+</html>

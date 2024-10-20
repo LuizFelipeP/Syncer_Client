@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PWA de Gastos - Login e Registro">
+  <meta name="theme-color" content="#3367D6">
+  <title>PWA - Login e Registro</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<body>
+<div class="container">
+  <!-- Tela de Login -->
+  <div class="login-container" id="login-container">
+    <h1>Login</h1>
+    <div class="form-group">
+      <label for="login-email">Usuário:</label>
+      <input type="text" id="login-email" required>
+    </div>
+    <div class="form-group">
+      <label for="login-password">Senha:</label>
+      <input type="password" id="login-password" required>
+    </div>
+    <div class="form-group">
+      <button id="login-btn">Entrar</button>
+    </div>
+    <button id="show-register">Não tem conta? Registre-se</button>
+  </div>
+
+  <!-- Tela de Registro -->
+  <div class="register-container" id="register-container" style="opacity: 0; display: none;">
+    <h1>Registro</h1>
+    <div class="form-group">
+      <label for="register-email">Usuário:</label>
+      <input type="text" id="register-email" required>
+    </div>
+    <div class="form-group">
+      <label for="register-password">Senha:</label>
+      <input type="password" id="register-password" required>
+    </div>
+    <div class="form-group">
+      <button id="register-btn">Registrar</button>
+    </div>
+    <button id="show-login">Já tem uma conta? Faça login</button>
+  </div>
+</div>
+<script type="module" src="/javascripts/script.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/javascripts/service-worker.js').then(function(reg) {
+      console.log('Service Worker registered!', reg);
+    }).catch(function(err) {
+      console.log('Service Worker registration failed:', err);
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Gastos</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Adicionar Gasto</h1>
+  <form id="expense-form">
+    <div class="form-group">
+      <label for="expense">Descrição do Gasto:</label>
+      <input type="text" id="expense" placeholder="Descrição do gasto">
+    </div>
+    <div class="form-group">
+      <label for="amount">Valor:</label>
+      <input type="number" id="amount" placeholder="Valor">
+    </div>
+    <div class="form-group">
+      <!-- Corrigido o ID -->
+      <button id="add-expense-btn">Adicionar Gasto</button>
+    </div>
+  </form>
+
+  <button id="back-to-dashboard">Voltar para o Dashboard</button>
+</div>
+
+
+
+<script type = "module" src="/javascripts/add-expense.js"></script>
+</body>
+</html>
