@@ -1,11 +1,13 @@
+import { carregarYjs } from './yjs-loader.js'; // Importar o arquivo centralizado
 document.addEventListener('DOMContentLoaded', () => {
   const userName = localStorage.getItem('user');
   const welcomeMessage = document.getElementById('welcome-message');
+  
 
   if (userName) {
     welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
 
-    import { carregarYjs } from '/yjs-loader.js'; // Importar o arquivo centralizado
+   
 
 // Agora, use a função para garantir que Yjs esteja carregado
     carregarYjs().then(() => {
@@ -13,12 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).catch((error) => {
       console.error('Erro ao carregar Yjs e IndexedDB:', error);
     });
-
-
-
-
-
-
 
   } else {
     window.location.href = '/index.html';
@@ -69,11 +65,12 @@ function carregarGasto() {
     expenseMap.delete(key);
 
     // Adiciona o gasto atualizado com a nova chave (descrição)
-    expenseMap.set(updatedExpense, { // Usa a nova descrição como a chave
+    expenseMap.set(id, { 
       amount: updatedAmount,
       date: updatedDate,
       synced: false, // Marca como não sincronizado inicialmente
-      user: userName
+      user: userName,
+      timestamp: new Date().toISOString(), // Capturar o timestamp atual
     });
 
     // Redirecionar de volta para a página de gastos

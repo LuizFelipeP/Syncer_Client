@@ -40,52 +40,38 @@ function inicializarYjsEIndexedDB() {
         expenseList?.appendChild(li);
 
         // Salvar o gasto no Yjs (IndexedDB)
+        const expenseId = getNextExpenseId();
         expenseMap.set(expense, {
+          id: expenseId,
           amount: amount,
           user: userName,
-          date: date
+          date: date,
+          timestamp: new Date().toISOString(), // Capturar o timestamp atual
+          synced: false
         });
 
         console.log(`Gasto salvo: ${expense} - R$ ${amount}, ${date} por ${userName}`);
-        enviarGastoParaServidor({ expense, amount, userName, date });
+        setInterval(5000);
+        window.location.href = '/pages/dashboard.html';
       }
     } else {
       alert('Por favor, preencha todos os campos e verifique se o usuário está logado!');
     }
   });
 
-  const backToDashboardBtn = document.getElementById('back-to-dashboard');
-  backToDashboardBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    window.location.href = '/pages/dashboard.html';
-  });
+
+  // Função para obter o próximo ID sequencial
+function getNextExpenseId() {
+  // Verificar se já existe um ID salvo no localStorage
+  const lastId = localStorage.getItem('lastExpenseId');
+  const nextId = lastId ? parseInt(lastId) + 1 : 1; // Se não houver, começar em 1
+
+  // Atualizar o valor no localStorage
+  localStorage.setItem('lastExpenseId', nextId);
+
+  return nextId; // Retornar o próximo ID sequencial
+}
 
 
-  function enviarGastoParaServidor(gasto) {
-    fetch('http://localhost:4000/api/add-expenses', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userName: gasto.userName,
-        description: gasto.expense,  // Alterado de 'expense' para 'description'
-        amount: gasto.amount,
-        date: gasto.date
-      })
-    })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Erro ao salvar gasto no servidor');
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Gasto enviado com sucesso para o servidor:', data);
-        })
-        .catch(error => {
-          console.error('Erro ao enviar gasto para o servidor:', error);
-        });
-  }
 }
 
